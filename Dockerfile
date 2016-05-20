@@ -8,7 +8,7 @@ RUN apk update && apk add openrc wget &&\
     # Tell openrc its running inside a container, till now that has meant LXC
     sed -i 's/#rc_sys=.*/rc_sys="lxc"/g' /etc/rc.conf && \
     # Hand over all enviroment variables to OpenRC
-    sed -i 's/#rc_env_allow=""/rc_env_allow="*"/g' /etc/rc.conf && \
+    sed -i 's/#rc_env_allow=.*/rc_env_allow="*"/g' /etc/rc.conf && \
     # Tell openrc loopback and net are already there, since docker handles the networking
     echo 'rc_provide="loopback net"' >> /etc/rc.conf && \
     # no need for loggers
